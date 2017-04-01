@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+    databus:
+        extends:
+            file: docker-compose.yml
+            service: rabbitmq
