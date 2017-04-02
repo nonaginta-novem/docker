@@ -4,7 +4,7 @@ services:
     databus:
         extends:
             file: docker-compose.yml
-            service: rabbitmq
+            service: databus
         image: rabbitmq:3-management
         ports:
             - '15673:15672'

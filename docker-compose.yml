@@ -3,3 +3,6 @@ version: '2'
 services:
     rabbitmq:
         image: rabbitmq:3
+    databus:
+        extends:
+            service: rabbitmq

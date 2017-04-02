@@ -4,4 +4,4 @@ services:
     databus:
         extends:
             file: docker-compose.yml
-            service: rabbitmq
+            service: databus
