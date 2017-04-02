@@ -2,7 +2,7 @@
 
 function print_usage
 {
-    echo "usage: compose.sh [[[--dev] [-d]] | [-h]] [CMD]"
+    echo "usage: compose.sh [[[--dev] [-d] [-v]] | [-h]] [CMD]"
 }
 
 
@@ -10,6 +10,7 @@ DEV_MODE=false
 COMPOSE_FILE=docker-compose.prod.yml
 PROJECT_NAME=nonaginta-novem
 DEAMON_MODE=false
+VERBOSE_MODE=false
 ACTION=$BASH_ARGV
 
 while [ "$1" != "" ]; do
@@ -17,6 +18,8 @@ while [ "$1" != "" ]; do
         --dev ) DEV_MODE=true
             ;;
         -d | --daemon ) DAEMON_MODE=true
+            ;;
+        -v | --verbose) VERBOSE_MODE=true
             ;;
         -h | --help ) print_usage
             exit
@@ -39,4 +42,8 @@ if [ "$DAEMON_MODE" == "true" ]; then
     CMD+=" -d"
 fi
 
-$($CMD)
+if [ "$VERBOSE_MODE" == "true" ]; then
+    $CMD
+else
+    $($CMD)
+fi
